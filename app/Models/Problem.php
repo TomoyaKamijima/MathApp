@@ -28,5 +28,6 @@ class Problem extends Model
         'title',
         'problem',
         'answer',
+        'image_path',
     ];
 }

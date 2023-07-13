@@ -7,7 +7,7 @@
     <body>
         <h1 class="title">編集画面</h1>
         <div class="content">
-            <form action="/problems" method="POST">
+            <form action="/problems" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="content__title">
@@ -33,6 +33,9 @@
                     <h2>Answer</h2>
                     <textarea name="problem[answer]" placeholder="解答">{{ $problem->answer }}</textarea>
                     <p class="answer__error" style="color:red">{{ $errors->first('problem.answer') }}</p>
+                </div>
+                <div class="image">
+                    <input type="file" name="image">
                 </div>
                 <input type="submit" value="投稿"/>
             </form>

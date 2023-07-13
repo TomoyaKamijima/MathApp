@@ -15,6 +15,9 @@
                 <h3>問題</h3>
                 <p>{{ $problem->problem }}</p>
             </div>
+            <div>
+                <img src="{{ $problem->image_path }}" alt="画像が読み込めません．"/>
+            </div>
         </div>
         <div class="edit"><a href="/problems/{{ $problem->id }}/edit">編集</a></div>
         <div class="footer">

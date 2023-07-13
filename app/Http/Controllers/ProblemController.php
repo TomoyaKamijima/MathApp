@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Problem;
 use App\Http\Requests\ProblemRequest;
+use Cloudinary;
 
 class ProblemController extends Controller
 {
@@ -26,6 +27,8 @@ class ProblemController extends Controller
     public function store(Problem $problem, ProblemRequest $request)
     {
         $input = $request['problem'];
+        $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $input += ['image_path' => $image_url];
         $problem->fill($input)->save();
         return redirect('/problems/' . $problem->id);
     }

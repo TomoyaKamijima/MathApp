@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Problem Name</h1>
-        <form action="/problems" method="POST">
+        <form action="/problems" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="title">
                 <h2>User ID</h2>
@@ -31,6 +31,9 @@
                 <h2>Answer</h2>
                 <textarea name="problem[answer]" placeholder="解答">{{ old('problem.answer') }}</textarea>
                 <p class="answer__error" style="color:red">{{ $errors->first('problem.answer') }}</p>
+            </div>
+            <div class="image">
+                <input type="file" name="image">
             </div>
             <input type="submit" value="投稿"/>
         </form>
