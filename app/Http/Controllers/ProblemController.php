@@ -29,4 +29,23 @@ class ProblemController extends Controller
         $problem->fill($input)->save();
         return redirect('/problems/' . $problem->id);
     }
+    
+    public function edit(Problem $problem)
+    {
+        return view('problems.edit')->with(['problem' => $problem]);
+    }
+    
+    public function update(ProblemRequest $request, Problem $problem)
+    {
+        $input_problem = $request['problem'];
+        $problem->fill($input_problem)->save();
+        
+        return redirect('/problems/' . $problem->id);
+    }
+    
+    public function delete(Problem $problem)
+    {
+        $problem->delete();
+        return redirect('/');
+    }
 }
