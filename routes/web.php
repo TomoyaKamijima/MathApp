@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [ProblemController::class, 'index']);
 Route::get('/problems/create', [ProblemController::class, 'create']);
 Route::get('/problems/{problem}', [ProblemController::class, 'show']);
+Route::get('/problems/{problem}/edit', [ProblemController::class, 'edit']);
+Route::put('/problems/{problem}', [ProblemController::class, 'update']);
+Route::delete('/problems/{problem}', [ProblemController::class, 'delete']);
 Route::post('/problems', [ProblemController::class, 'store']);
 
 Route::get('/dashboard', function () {

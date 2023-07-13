@@ -16,6 +16,7 @@
                 <p>{{ $problem->problem }}</p>
             </div>
         </div>
+        <div class="edit"><a href="/problems/{{ $problem->id }}/edit">編集</a></div>
         <div class="footer">
             <a href="/">戻る</a>
         </div>
