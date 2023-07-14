@@ -22,9 +22,10 @@
                 <div>
                     <img src="{{ $problem->image_path }}" alt="画像が読み込めません．"/>
                 </div>
-            </div>
-            <div>
-                <a href="/answers/{{ $problem->id }}">解答を見る</a>
+                <div class="content__answer">
+                    <h3>解答</h3>
+                    <p>{{ $problem->answer }}</p>
+                </div>
             </div>
             <div class="edit"><a href="/problems/{{ $problem->id }}/edit">編集</a></div>
             <div class="footer">
