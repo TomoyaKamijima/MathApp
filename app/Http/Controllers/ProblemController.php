@@ -19,6 +19,11 @@ class ProblemController extends Controller
         return view('problems.problem')->with(['problem' => $problem]);
     }
     
+    public function showAnswer(Problem $problem)
+    {
+        return view('problems.answer')->with(['problem' => $problem]);
+    }
+    
     public function create()
     {
         return view('problems.create');
