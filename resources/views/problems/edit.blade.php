@@ -6,25 +6,43 @@
     </head>
     <x-app-layout>
         <x-slot name="header">
-            　Header
+            作問の森
         </x-slot>
         <body>
-            <h1 class="title">編集画面</h1>
+            <h1 class="title">問題編集</h1>
             <div class="content">
-                <form action="/problems" method="POST" enctype="multipart/form-data">
+                <form action="/problems/{{ $problem->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="content__title">
-                        <h2>User ID</h2>
-                        <input type="integer" name="problem[user_id]" placeholder="ユーザID" value="{{ $problem->user_id }}"/>
-                        <p class="user_id__error" style="color:red">{{ $errors->first('problem.user_id') }}</p>
-                        <h2>Category ID</h2>
-                        <input type="integer" name="problem[category_id]" placeholder="カテゴリーID" value="{{ $problem->category_id }}"/>
-                        <p class="category_id__error" style="color:red">{{ $errors->first('problem.category_id') }}</p>
-                        <h2>Level ID</h2>
-                        <input type="text" name="problem[level_id]" placeholder="レベルID" value="{{ $problem->level_id }}"/>
-                        <p class="level_id__error" style="color:red">{{ $errors->first('problem.level_id') }}</p>
-                        <h2>Title</h2>
+                        <h2>分野</h2>
+                    <select name="problem[category_id]" value="{{ old('problem.category_id') }}">
+                        <option value="">分野を選択してください</option>
+                        <option value="1">代数</option>
+                        <option value="2">幾何</option>
+                        <option value="3">解析</option>
+                        <option value="4">確率・統計</option>
+                        <option value="5">その他</option>
+                    </select>
+                    <p class="category_id__error" style="color:red">{{ $errors->first('problem.category_id') }}</p>
+                    <h2>難易度</h2>
+                    <select name="problem[level_id]" value="{{ old('problem.level_id') }}">
+                        <option value="">レベルを選択してください</option>
+                        <option value="1">小学校（易）</option>
+                        <option value="2">小学校（標準）</option>
+                        <option value="3">小学校（難）</option>
+                        <option value="4">中学校（易）</option>
+                        <option value="5">中学校（標準）</option>
+                        <option value="6">中学校（難）</option>
+                        <option value="7">高校（易）</option>
+                        <option value="8">高校（標準）</option>
+                        <option value="9">高校（難）</option>
+                        <option value="10">大学・一般（易）</option>
+                        <option value="11">大学・一般（標準）</option>
+                        <option value="12">大学・一般（難）</option>
+                    </select>
+                    <p class="level_id__error" style="color:red">{{ $errors->first('problem.level_id') }}</p>
+                    <h2>Title</h2>
                         <input type="text" name="problem[title]" placeholder="タイトル" value="{{ $problem->title }}"/>
                         <p class="title__error" style="color:red">{{ $errors->first('problem.title') }}</p>
                     </div>

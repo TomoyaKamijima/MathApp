@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ProblemController::class, 'index'])->name('index');
+Route::get('/', [ProblemController::class, 'index'])->name('index')->middleware('auth');
 Route::get('/problems/create', [ProblemController::class, 'create'])->name('create')->middleware('auth');
 Route::get('/problems/{problem}', [ProblemController::class, 'show'])->name('show');
 Route::get('/answers/{problem}', [ProblemController::class, 'showAnswer'])->name('showAnswer');

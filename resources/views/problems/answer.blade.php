@@ -8,7 +8,7 @@
     </head>
     <x-app-layout>
         <x-slot name="header">
-            Header
+            作問の森
         </x-slot>
         <body>
             <h1 class="title">
@@ -19,9 +19,11 @@
                     <h3>問題</h3>
                     <p>{{ $problem->problem }}</p>
                 </div>
+                @if($problem->image_path)
                 <div>
                     <img src="{{ $problem->image_path }}" alt="画像が読み込めません．"/>
                 </div>
+                @endif
                 <div class="content__answer">
                     <h3>解答</h3>
                     <p>{{ $problem->answer }}</p>
