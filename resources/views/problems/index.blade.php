@@ -8,37 +8,42 @@
     </head>
     <x-app-layout>
         <x-slot name="header">
-            Header
+            作問の森
         </x-slot>
         <body>
-            <h1>App name</h1>
+            <a href='/problems/create'>新規問題作成</a>
+            <h1>問題一覧</h1>
             <div class='problems'>
-                <a href='/problems/create'>新規問題作成</a>
                 @foreach ($problems as $problem)
                     <div class='problem'>
                         <h2 class='title'>
-                            <a href="/problems/{{ $problem->id }}">{{ $problem->title }}</a>
+                            <a href="/problems/{{ $problem->id }}">
+                                {{ $problem->title }}
+                            </a>
                         </h2>
                         <p class='body'>{{ $problem->problem }}</p>
-                        <from action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
+                        <form action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="button" onclick="deleteProblem({{ $problem->id }})">削除</button>
-                        </from>
+                        </form>
                     </div>
                 @endforeach
             </div>
             <div class='paginate'>
                 {{ $problems->links() }}
             </div>
-            <div>
-                ログインユーザ：{{ Auth::user()->name }}
-            </div>
+            <textarea id='calPlace'>
+            </textarea>
+            <p id='calDisplay'>
+            </p>
+            <button id='calBtn'>表示</button>
             <script>
                 function deleteProblem(id) {
                     'use strict'
                     
                     if (confirm('削除すると復元できません．\n本当に削除しますか？')) {
+                        //console.log(document.getElementById(`form_${id}`));
                         document.getElementById(`form_${id}`).submit();
                     }
                 }

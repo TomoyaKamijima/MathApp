@@ -24,7 +24,6 @@ class ProblemRequest extends FormRequest
     public function rules()
     {
         return [
-            'problem.user_id' => 'required|integer|max:11',
             'problem.category_id' => 'required|integer|max:11',
             'problem.level_id' => 'required|integer|max:11',
             'problem.title' => 'required|string|max:50',

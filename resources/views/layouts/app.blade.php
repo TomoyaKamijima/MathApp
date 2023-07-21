@@ -32,5 +32,7 @@
                 {{ $slot }}
             </main>
         </div>
+        <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="{{ asset('/js/cal.js') }}"></script>
     </body>
 </html>
