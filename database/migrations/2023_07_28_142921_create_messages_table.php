@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('problem_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('problem_id')->constrained();
             $table->string('message', 1000);
             $table->timestamps();
             $table->softDeletes();

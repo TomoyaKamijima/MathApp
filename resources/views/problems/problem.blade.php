@@ -15,6 +15,8 @@
                 {{ $problem->title }}
             </h1>
             <div class="content">
+                <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
+                <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
                 <div class="content__problem">
                     <h3>問題</h3>
                     <p>{{ $problem->problem }}</p>
