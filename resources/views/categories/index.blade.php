@@ -12,7 +12,7 @@
         </x-slot>
         <body>
             <a href='/problems/create'>新規問題作成</a>
-            <h1>問題一覧</h1>
+            <h1>問題一覧（分野別）</h1>
             <div class='problems'>
                 @foreach ($problems as $problem)
                     <div class='problem'>
@@ -23,6 +23,9 @@
                         </h2>
                         <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
                         <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
+                        <p>
+                            作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
+                        </p>
                         <form action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
                             @csrf
                             @method('DELETE')

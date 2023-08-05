@@ -12,7 +12,7 @@
         </x-slot>
         <body>
             <a href='/problems/create'>新規問題作成</a>
-            <h1>問題一覧（難易度別）</h1>
+            <h1>問題一覧（作成者別）</h1>
             <div class='problems'>
                 @foreach ($problems as $problem)
                     <div class='problem'>

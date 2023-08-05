@@ -7,6 +7,8 @@ use App\Models\Problem;
 use App\Models\Category;
 use App\Models\Level;
 use App\Models\Message;
+use App\Models\User;
+use App\Models\Problem_User;
 use App\Http\Requests\ProblemRequest;
 use Cloudinary;
 use Illuminate\Support\Facades\Auth;
@@ -23,14 +25,14 @@ class ProblemController extends Controller
         return view('problems.problem')->with(['problem' => $problem]);
     }
     
-    public function showAnswer(Problem $problem, Message $message)
+    public function showAnswer(Problem $problem, Message $message, User $user)
     {
-        return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get()]);
+        return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get(), 'users' => $user->get()]);
     }
     
-    public function create(Category $category, Level $level)
+    public function create(Category $category, Level $level, User $user)
     {
-        return view('problems.create')->with(['categories' => $category->get(), 'levels' => $level->get()]);
+        return view('problems.create')->with(['categories' => $category->get(), 'levels' => $level->get(), 'users' => $user->get()]);
     }
     
     public function store(Problem $problem, ProblemRequest $request)
@@ -66,5 +68,12 @@ class ProblemController extends Controller
     {
         $problem->delete();
         return redirect('/');
+    }
+    
+    public function favorite(Problem $problem, Problem_User $problemUser)
+    {
+        $input = ['user_id' => Auth::id(), 'problem_id' => $problem->id];
+        $problemUser->fill($input)->save();
+        return redirect('/answers/' . $problem->id);
     }
 }

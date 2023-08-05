@@ -17,6 +17,9 @@
             <div class="content">
                 <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
                 <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
+                <p>
+                    作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
+                </p>
                 <div class="content__problem">
                     <h3>問題</h3>
                     <p>{{ $problem->problem }}</p>
