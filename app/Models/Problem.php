@@ -18,7 +18,7 @@ class Problem extends Model
     
     public function getPaginateByLimit(int $limit_count =10)
     {
-        return $this::with('category','level')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this::with('category','level','user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
     protected $fillable = [
@@ -45,5 +45,10 @@ class Problem extends Model
     public function messages()
     {
         return $this->hasMany(Message::class);
+    }
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

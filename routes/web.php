@@ -5,6 +5,7 @@ use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::post('/problems', [ProblemController::class, 'store'])->name('store')->mi
 Route::get('/categories/{category}', [CategoryController::class,'index']);
 Route::get('/levels/{level}', [LevelController::class,'index']);
 Route::post('/answers/{problem}', [MessageController::class, 'store']);
+Route::get('/statuses/{user}', [UserController::class,'index']);
+Route::post('/answers/{problem}', [ProblemController::class, 'favorite']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

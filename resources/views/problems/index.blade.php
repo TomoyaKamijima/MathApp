@@ -23,6 +23,9 @@
                         </h2>
                         <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
                         <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
+                        <p>
+                            作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
+                        </p>
                         <form action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
                             @csrf
                             @method('DELETE')

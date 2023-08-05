@@ -16,6 +16,9 @@
             </h1>
             <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
             <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
+            <p>
+                作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
+            </p>
             <div class="content">
                 <div class="content__problem">
                     <h3>問題</h3>
@@ -40,6 +43,12 @@
             <div class="footer">
                 <a href="/">戻る</a>
             </div>
+            
+            <form action="/answers/{{ $problem->id }}" method="POST">
+                @csrf
+                <input type="submit" value="お気に入り登録"/>
+            </form>
+            
             <h2>質問</h2>
             <form action="/answers/{{ $problem->id }}" method="POST">
                 @csrf
@@ -53,6 +62,9 @@
             <div class='chats'>
                 @foreach ($messages as $message)
                     <div class='message'>
+                        <p>
+                            {{ $message->user->name }}さん {{ $message->created_at }}
+                        </p>
                         <p class="message">
                             {{ $message->message }}
                         </p>

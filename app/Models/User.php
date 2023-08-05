@@ -11,6 +11,21 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+    
+    public function problems()
+    {
+        return $this->hasMany(Problem::class);
+    }
+    
+    public function getByUser(int $limit_count = 10)
+    {
+        return $this->problems()->with('user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 
     /**
      * The attributes that are mass assignable.
