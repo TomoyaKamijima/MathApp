@@ -14,7 +14,7 @@
             <div class="margin">
                 <div class='problems'>
                     <a href='/problems/create' class='new'>新規問題作成</a>
-                    <h1>問題一覧（分野別）</h1>
+                    <h1>問題一覧（お気に入り）</h1>
                     @foreach ($problems as $problem)
                         <div class='problem'>
                             <h2 class='title'>

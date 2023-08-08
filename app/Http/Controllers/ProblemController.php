@@ -70,10 +70,18 @@ class ProblemController extends Controller
         return redirect('/');
     }
     
-    public function favorite(Problem $problem, Problem_User $problemUser)
+    public function favorite(Request $request, Problem $problem, Message $message)
     {
-        $input = ['user_id' => Auth::id(), 'problem_id' => $problem->id];
-        $problemUser->fill($input)->save();
-        return redirect('/answers/' . $problem->id);
+        if ($request->has('question')) {
+            $input = $request['message'];
+            $input += ['user_id' => Auth::id()];
+            $input += ['problem_id' => $problem->id];
+            $message->fill($input)->save();
+            return redirect('/answers/' . $problem->id);
+        } else {
+            $userId = Auth::id();
+            $problem->likes()->attach($userId);
+            return redirect('/answers/' . $problem->id);
+        }
     }
 }

@@ -17,6 +17,11 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
     
+    public function likes()
+    {
+        return $this->belongsToMany(Problem::class);
+    }
+    
     public function problems()
     {
         return $this->hasMany(Problem::class);

@@ -21,6 +21,12 @@
                 </div>
             </div>
             
+            @guest
+            <div class="header-btn">
+                <a href="/login">ログイン</a>
+                <a href="/register">新規登録</a>
+            </div>
+            @endguest
             @auth
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">

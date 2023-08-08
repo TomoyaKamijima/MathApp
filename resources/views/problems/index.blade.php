@@ -11,51 +11,69 @@
             作問の森
         </x-slot>
         <body>
-            <a href='/problems/create'>新規問題作成</a>
-            <h1>問題一覧</h1>
-            <div class='problems'>
-                @foreach ($problems as $problem)
-                    <div class='problem'>
-                        <h2 class='title'>
-                            <a href="/problems/{{ $problem->id }}">
-                                {{ $problem->title }}
+            <div class="margin">
+                <div class='problems'>
+                    <a href='/problems/create' class='new'>新規問題作成</a>
+                    <h1>問題一覧</h1>
+                    @foreach ($problems as $problem)
+                        <div class='problem'>
+                            <h2 class='title'>
+                                <a href="/problems/{{ $problem->id }}">
+                                    {{ $problem->title }}
+                                </a>
+                            </h2>
+                            <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
+                            <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
+                            <p>
+                                作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
+                            </p>
+                            @auth
+                            @if ($problem->user_id===Auth::id())
+                            <form action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <div align="right">
+                                    <button type="button" onclick="deleteProblem({{ $problem->id }})" class="btn">削除</button>
+                                </div>
+                            </form>
+                            @endif
+                            @endauth
+                        </div>
+                    @endforeach
+                </div>
+                <div class='paginate'>
+                    {{ $problems->links() }}
+                </div>
+                <div class='categories'>
+                    <h2>分野で絞る</h2>
+                    @foreach ($categories as $category)
+                        <div class='category'>
+                            <a href="/categories/{{ $category->id }}">
+                                {{ $category->name }}
                             </a>
-                        </h2>
-                        <a href="/categories/{{ $problem->category->id }}">{{ $problem->category->name }}</a>
-                        <a href="/levels/{{ $problem->level->id }}">{{ $problem->level->name }}</a>
-                        <p>
-                            作問者：<a href="/statuses/{{ $problem->user->id }}">{{ $problem->user->name }}</a>
-                        </p>
-                        <form action="/problems/{{ $problem->id }}" id="form_{{ $problem->id }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="button" onclick="deleteProblem({{ $problem->id }})">削除</button>
-                        </form>
-                    </div>
-                @endforeach
-            </div>
-            <div class='paginate'>
-                {{ $problems->links() }}
-            </div>
-            <h2>分野で絞る</h2>
-            <div class='categories'>
-                @foreach ($categories as $category)
-                    <div class='category'>
-                        <a href="/categories/{{ $category->id }}">
-                            {{ $category->name }}
+                        </div>
+                    @endforeach
+                </div>
+                <div class='levels'>
+                    <h2>難易度で絞る</h2>
+                    @foreach ($levels as $level)
+                        <div class='level'>
+                            <a href="/levels/{{ $level->id }}">
+                                {{ $level->name }}
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+                @auth
+                <div class='favorites'>
+                    <h2>お気に入り</h2>
+                    <div class='favorite'>
+                        <a href="/favorites/{{ Auth::id() }}">
+                            お気に入り
                         </a>
                     </div>
-                @endforeach
-            </div>
-            <h2>難易度で絞る</h2>
-            <div class='levels'>
-                @foreach ($levels as $level)
-                    <div class='level'>
-                        <a href="/levels/{{ $level->id }}">
-                            {{ $level->name }}
-                        </a>
-                    </div>
-                @endforeach
+                </div>
+                @endauth
             </div>
             <script>
                 function deleteProblem(id) {
