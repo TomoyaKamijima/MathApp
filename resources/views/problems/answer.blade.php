@@ -23,10 +23,12 @@
                     </p>
                 </div>
                 
+                @auth
                 <form action="/answers/{{ $problem->id }}" method="POST" align="right">
                     @csrf
                     <input type="submit" name="favorite" value="お気に入り登録" class="btn"/>
                 </form>
+                @endauth
                 
                 <div class="problem">
                     <div class="content__problem">
@@ -59,6 +61,10 @@
                     <a href="/">一覧に戻る</a>
                 </div>
                 <h2>コメント</h2>
+                <div>
+                    ログインするとコメントができるようになります．
+                </div>
+                @auth
                 <form action="/answers/{{ $problem->id }}" method="POST">
                     @csrf
                     <div class="message">
@@ -69,6 +75,7 @@
                         <input type="submit" name="question" value="送信" class="btn"/>
                     </div>
                 </form>
+                @endauth
                 <h2>コメント履歴</h2>
                 <div class='chats'>
                     @foreach ($messages as $message)
