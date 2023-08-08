@@ -13,4 +13,9 @@ class Problem_User extends Model
         'problem_id',
         'user_id',
     ];
+    
+    public function getByProblem_User(int $limit_count = 10)
+    {
+        return $this->problems()->with('problem_user')->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }

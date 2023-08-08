@@ -47,6 +47,11 @@ class Problem extends Model
         return $this->hasMany(Message::class);
     }
     
+    public function likes()
+    {
+        return $this->belongsToMany(User::class);
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);

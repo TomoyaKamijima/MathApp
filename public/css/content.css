@@ -1,0 +1,52 @@
+.problem{
+    padding:10px 20px;
+    border:2px solid black;
+    border-radius:5px;
+    margin:0 8px;
+}
+
+.new{
+    position: relative; /* 今の位置を基準 */
+    top: 40px;
+    left: 420px;
+    width:500px;
+    padding:10px 20px;
+    border:2px solid black;
+    border-radius:5px;
+    margin:0 8px;
+}
+
+.categories{
+    position: relative; /* 今の位置を基準 */
+    top: 0px;
+    left: 10px;
+    width:500px;
+}
+
+.levels{
+    position: relative; /* 今の位置を基準 */
+    top: -168px;
+    left: 160px;
+    width:500px;
+}
+
+.favorites{
+    position: relative; /* 今の位置を基準 */
+    top: -504px;
+    left: 330px;
+    width:500px;
+}
+
+.margin{
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.btn{
+    background-color: #0b0;   /* ボタンの表面色 */
+    color: royalblue;             /* ボタンの文字色 */
+    text-decoration: underline;
+    font-size: 1em;           /* ボタンの文字サイズ */
+    padding: 0.25em 0.75em;   /* ボタン内側の余白量 */
+    cursor: pointer;
+}
