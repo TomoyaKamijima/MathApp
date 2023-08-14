@@ -40,7 +40,10 @@
                     </div>
                     <div class="body">
                         <h2>問題</h2>
-                        <textarea name="problem[problem]" placeholder="問題文" rows="10" cols="67">{{ old('problem.problem') }}</textarea>
+                        <textarea name="problem[problem]" placeholder="問題文" rows="10" cols="67" id="textarea">{{ old('problem.problem') }}</textarea>
+                        <p id="txt"></p>
+                        <button id="btn" type="button">表示</button>
+                        <button id="clear" type="button">クリア</button>
                         <p class="problem__error" style="color:red">{{ $errors->first('problem.problem') }}</p>
                     </div>
                     <div class="image">
@@ -62,9 +65,5 @@
                     <a href="/">一覧に戻る</a>
                 </div>
             </div>
-            <textarea id="textarea" rows="10" cols="50"></textarea>
-            <p id="txt"></p>
-            <button id="btn" type="button">表示</button>
-            <button id="clear" type="button">クリア</button>
             <script src="{{ asset('/js/cal.js') }}"></script>
     </x-app-layout>
