@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <title>MathApp</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    </head>
     <x-app-layout>
         <x-slot name="header">
             作問の森
         </x-slot>
-        <body>
             <div class="margin">
                 <div class="content">
                     <h1 class="title">
@@ -24,9 +15,10 @@
                 </div>
                 
                 @auth
-                <form action="/answers/{{ $problem->id }}" method="POST" align="right">
+                <form action="/answers/{{ $problem->id }}" method="POST" align="right" id="favorite">
                     @csrf
                     <input type="submit" name="favorite" value="お気に入り登録" class="btn"/>
+                    <button type="button" onclick="submitProblem()">お気に入り登録</button>
                 </form>
                 @endauth
                 
@@ -92,6 +84,11 @@
                     @endforeach
                 </div>
             </div>
-        </body>
+            <script>
+                function submitProblem() {
+                    'use strict'
+                    alert('お気に入り登録します．')
+                    document.getElementById('favorite').submit();
+                }
+            </script>
     </x-app-layout>
-</html>

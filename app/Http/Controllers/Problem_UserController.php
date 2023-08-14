@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Auth;
 
 class Problem_UserController extends Controller
 {
-    public function index(Problem $problem, Category $category, Level $level, Problem_User $problem_user)
+    public function index(Problem $problem, Category $category, Level $level, Problem_User $problem_user, User $user)
     {
-        return view('favorites.index')->with(['problems' => $problem_user->getByProblem_User(), 'categories' => $category->get(), 'levels' => $level->get()]);
+        //dd($user->likes()->get());
+        return view('favorites.index')->with(['problems' => $user->likes()->get(), 'categories' => $category->get(), 'levels' => $level->get()]);
     }
 }

@@ -41,9 +41,6 @@
                         </div>
                     @endforeach
                 </div>
-                <div class='paginate'>
-                    {{ $problems->links() }}
-                </div>
                 <div class='categories'>
                     <h2>分野で絞る</h2>
                     @foreach ($categories as $category)
