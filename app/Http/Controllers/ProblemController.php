@@ -28,6 +28,7 @@ class ProblemController extends Controller
     public function showAnswer(Problem $problem, Message $message, User $user)
     {
         $judge = true;
+        /*
         if(Auth::user()) {
             $problems=Auth::user()->likes()->get();
             foreach($problems as $tmp) {
@@ -37,6 +38,7 @@ class ProblemController extends Controller
                 }
             }
         }
+        */
         return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get(), 'users' => $user->get(), 'judge' => $judge]);
     }
     
