@@ -55,9 +55,6 @@
             <a href="/">一覧に戻る</a>
         </div>
         <h2>コメント</h2>
-        <div>
-            ログインするとコメントができるようになります．
-        </div>
         @auth
         <form action="/answers/{{ $problem->id }}" method="POST">
             @csrf
@@ -69,6 +66,10 @@
                 <input type="submit" name="question" value="送信" class="btn"/>
             </div>
         </form>
+        @else
+        <div>
+            ログインするとコメントができるようになります．
+        </div>
         @endauth
         <h2>コメント履歴</h2>
         <div class='chats'>
