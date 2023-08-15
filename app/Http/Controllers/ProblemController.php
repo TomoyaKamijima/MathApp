@@ -27,12 +27,14 @@ class ProblemController extends Controller
     
     public function showAnswer(Problem $problem, Message $message, User $user)
     {
-        $problems=Auth::user()->likes()->get();
         $judge = true;
-        foreach($problems as $tmp) {
-            if ($tmp->id === $problem->id) {
-                $judge = false;
-                break;
+        if(Auth::user()) {
+            $problems=Auth::user()->likes()->get();
+            foreach($problems as $tmp) {
+                if ($tmp->id === $problem->id) {
+                    $judge = false;
+                    break;
+                }
             }
         }
         return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get(), 'users' => $user->get(), 'judge' => $judge]);
