@@ -6,7 +6,6 @@ const clear = document.getElementById("clear");
 //const submit = document.getElementById("submit");
 let mathtxt = "";
 
-/*
 window.addEventListener("load", () => {
     mathtxt = localStorage.getItem("math");
     if(mathtxt){
@@ -14,21 +13,21 @@ window.addEventListener("load", () => {
         formula.value = mathtxt;
     }
 })
-*/
 
+/*
 window.addEventListener("load", () => {
     formula.value = "";
     txt.innerText = "";
     localStorage.removeItem('math');
 })
+*/
 
-/*
 btn.addEventListener("click", () => {
      localStorage.setItem("math", formula.value);
      location.reload();
 })
-*/
 
+/*
 btn.addEventListener("click", () => {
     localStorage.setItem("math", formula.value);
     mathtxt = localStorage.getItem("math");
@@ -37,6 +36,7 @@ btn.addEventListener("click", () => {
         formula.value = mathtxt;
     }
 })
+*/
 
 clear.addEventListener("click", () => {
     formula.value = "";
@@ -44,7 +44,6 @@ clear.addEventListener("click", () => {
     localStorage.removeItem('math');
 })
 
-/*
 back.addEventListener("click", () => {
     formula.value = "";
     txt.innerText = "";
@@ -57,4 +56,3 @@ submit.addEventListener("click", () => {
     txt.innerText = "";
     localStorage.removeItem('math');
 })
-*/
