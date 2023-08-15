@@ -27,7 +27,15 @@ class ProblemController extends Controller
     
     public function showAnswer(Problem $problem, Message $message, User $user)
     {
-        return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get(), 'users' => $user->get()]);
+        $problems=Auth::user()->likes()->get();
+        $judge = true;
+        foreach($problems as $tmp) {
+            if ($tmp->id === $problem->id) {
+                $judge = false;
+                break;
+            }
+        }
+        return view('problems.answer')->with(['problem' => $problem, 'messages' => $message->get(), 'users' => $user->get(), 'judge' => $judge]);
     }
     
     public function create(Category $category, Level $level, User $user)
