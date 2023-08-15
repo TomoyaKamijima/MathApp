@@ -2,8 +2,8 @@ const formula = document.getElementById("textarea");
 const txt = document.getElementById("txt");
 const btn = document.getElementById("btn");
 const clear = document.getElementById("clear");
-//const back = document.getElementById("back");
-//const submit = document.getElementById("submit");
+const back = document.getElementById("back");
+const submit = document.getElementById("submit");
 let mathtxt = "";
 
 window.addEventListener("load", () => {
@@ -51,7 +51,7 @@ back.addEventListener("click", () => {
 })
 
 submit.addEventListener("click", () => {
-    submit.submit();
+    //submit.submit();
     formula.value = "";
     txt.innerText = "";
     localStorage.removeItem('math');

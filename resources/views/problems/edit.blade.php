@@ -53,7 +53,7 @@
                     <input type="file" name="imageAns">
                 </div>
                 <div align="center">
-                    <input type="submit" value="保存" class="btn"/>
+                    <input type="submit" value="保存" class="btn" id="submit"/>
                 </div>
             </form>
         </div>
@@ -65,7 +65,7 @@
             <button id="clear" type="button" class="btn">クリア</button>
         </div>
         <div class="footer" align="center">
-            <a href="/problems/{{ $problem->id }}">保存せずに問題に戻る</a>
+            <a href="/problems/{{ $problem->id }}" id="back">保存せずに問題に戻る</a>
         </div>
     </div>
     <script src="{{ asset('/js/cal.js') }}"></script>
